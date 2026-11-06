@@ -1,7 +1,7 @@
 package gm.inventario.controlador;
 
 import gm.inventario.model.Producto;
-import gm.inventario.servicio.ProductoSevice;
+import gm.inventario.servicio.ProductoServicio;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ public class ProductoControlador {
     private static final Logger logger = LoggerFactory.getLogger(ProductoControlador.class);
 
     @Autowired
-    private ProductoSevice productoSevice;
+    private ProductoServicio productoServicio;
 
     @GetMapping("/productos") // http://localhost:8081/inventario-app/productos
     public List<Producto> obtenerProductos(){
-        List<Producto> productos = this.productoSevice.ListarProductos();
+        List<Producto> productos = this.productoServicio.ListarProductos();
         logger.info("Productos obtenidos: ");
         productos.forEach(producto -> logger.info(producto.toString()));
         return productos;
